@@ -1,0 +1,46 @@
+.loadingContainer {
+  width: 100%;
+  height: fit-content;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  .imageContainer {
+    width: fit-content;
+    height: fit-content;
+
+    animation: spinning 2s infinite;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+    transform: rotate(0deg);
+
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+
+  @keyframes spinning {
+    0%,
+    20% {
+      transform-origin: rotate(0deg);
+    }
+    30% {
+      transform: rotate(-30deg);
+    }
+    60% {
+      transform: rotate(360deg);
+    }
+    70% {
+      transform: rotate(380deg);
+    }
+    80% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

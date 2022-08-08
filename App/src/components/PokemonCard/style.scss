@@ -1,0 +1,107 @@
+@mixin centerColumn {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin centerRow {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardContainer {
+  width: 160px;
+  height: 122px;
+  padding: 5px 10px;
+  border-radius: 20px 0px 20px 0px;
+  position: relative;
+  overflow: hidden;
+
+  @include centerColumn();
+  gap: 5px;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  h3 {
+    font-weight: 700;
+    font-size: 18px;
+    text-align: left;
+    word-wrap: break-word;
+    max-width: 130px;
+    z-index: 50;
+  }
+
+  .firstLine {
+    @include centerRow;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .typeIconsContainer {
+    @include centerRow();
+    width: fit-content;
+    height: fit-content;
+    gap: 10px;
+
+    svg {
+      height: 20px;
+      width: auto;
+      path {
+        height: 20px;
+        fill: currentColor !important;
+      }
+    }
+  }
+
+  .pokemonIndex {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0px 5px;
+    // color: white !important;
+    opacity: 60%;
+
+    h4 {
+      font-weight: 700;
+      font-size: 20px;
+    }
+  }
+
+  .sprite {
+    position: absolute;
+    padding-right: 5px;
+    bottom: 5px;
+    right: 5px;
+    z-index: 20;
+    width: 70px;
+    height: 90px;
+    @include centerColumn();
+
+    img {
+      max-height: 90px;
+      width: 70px;
+      object-fit: contain;
+    }
+  }
+
+  .pokeball {
+    position: absolute;
+    padding-right: 10px;
+    bottom: 5px;
+    right: 0px;
+    z-index: 0;
+    transform: rotate(-30deg);
+    opacity: 50%;
+
+    img {
+      height: 75px;
+      width: auto;
+    }
+  }
+}

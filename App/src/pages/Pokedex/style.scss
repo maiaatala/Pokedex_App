@@ -1,0 +1,86 @@
+@mixin centerColumn {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin centerRow {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+$headerHeight: 100px;
+$paginationHeight: 50px;
+
+.PokedexContainer {
+  max-height: 100vh;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  width: 100vw;
+  min-width: 360px;
+  // gap: 30px;
+  @include centerColumn;
+
+  .header {
+    width: 100%;
+    height: $headerHeight;
+    padding: 20px 1rem 5px;
+    // background-color: white;
+
+    svg {
+      width: 25px;
+      height: auto;
+    }
+
+    .pokedexMenu {
+      width: 100%;
+      @include centerRow;
+      justify-content: flex-start;
+      gap: 15px;
+
+      h1 {
+        font-weight: 700;
+        size: 30px;
+      }
+
+      .rippleContainer {
+        border-radius: 20px;
+        width: fit-content;
+        height: fit-content;
+      }
+    }
+  }
+
+  .contentContainer {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+    height: calc(100% - #{$headerHeight});
+    // @include centerColumn();
+
+    .cardListContainer {
+      padding: 10px;
+      flex-grow: 1;
+      width: 100%;
+      height: fit-content;
+
+      @include centerRow;
+
+      flex-wrap: wrap;
+      gap: 15px;
+      // justify-content: flex-start;
+    }
+
+    .pagination {
+      width: 100%;
+      @include centerColumn();
+    }
+  }
+}

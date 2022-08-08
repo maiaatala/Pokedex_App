@@ -1,0 +1,400 @@
+@mixin centerColumn {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin centerRow {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemonPageContainer {
+  padding: 20px 1rem 0;
+  @include centerColumn();
+  justify-content: flex-start;
+  overflow-x: hidden;
+  min-width: 360px;
+  width: 100vw;
+  position: relative;
+
+  .header {
+    @include centerColumn();
+    align-items: flex-start;
+    // align-self: flex-start;
+    width: 100%;
+    max-width: 600px;
+    .backArrow {
+      width: 40px;
+      height: 40px;
+
+      svg {
+        width: 25px;
+        height: auto;
+      }
+
+      .rippleContainer {
+        padding: 0;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+
+    .nameAndId {
+      @include centerRow();
+      justify-content: flex-start;
+      align-items: baseline;
+      padding-left: 1rem;
+      gap: 30px;
+
+      .name {
+        font-weight: 700;
+        font-size: 30px;
+      }
+
+      .id {
+        font-weight: 400;
+        font-size: 25px;
+      }
+    }
+  }
+
+  .spriteAndType {
+    @include centerColumn();
+    align-items: flex-start;
+    // align-self: flex-start;
+    max-width: 600px;
+    padding-top: 20px;
+    min-height: 135px;
+    width: 100%;
+    position: relative;
+
+    .type {
+      @include centerColumn();
+      width: fit-content;
+      // padding-left: 0.5rem;
+      gap: 10px;
+
+      .nameIconContainer {
+        width: fit-content;
+        @include centerColumn();
+        .typeIcon {
+          width: fit-content;
+
+          svg {
+            height: auto;
+            width: 35px;
+            path {
+              width: 35px;
+              fill: currentColor !important;
+            }
+          }
+        }
+        .typeName {
+          width: fit-content;
+          font-weight: 600;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .sprite {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      z-index: 20;
+      transform: translate(-50%, 50%);
+
+      img {
+        width: 200px;
+        max-height: 230px;
+        object-fit: contain;
+      }
+    }
+
+    .pokeball {
+      position: absolute;
+      left: 50%;
+      // bottom: 0;
+      top: 0;
+      z-index: 0;
+      transform: translate(-10%, 10%) rotate((-30deg));
+      opacity: 40%;
+
+      img {
+        width: 170px;
+        height: 170px;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .buttons {
+    margin-top: 110px;
+    font-weight: 700;
+    font-size: 20px;
+    max-width: 700px;
+    width: 100%;
+    @include centerRow();
+    justify-content: space-around;
+    cursor: pointer;
+
+    .btn {
+      color: black !important;
+    }
+
+    .active {
+      color: currentColor !important;
+      transition: 1000ms;
+    }
+
+    .rippleContainer {
+      border-radius: 20px;
+    }
+  }
+
+  .divider {
+    width: 80%;
+    margin-top: 5px;
+    max-width: 600px;
+    border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
+    border-style: solid;
+    border-color: #454344;
+    border-top-width: 1px;
+  }
+
+  .contentContainer {
+    width: 100%;
+    max-width: 1000px;
+    // padding-top: 20px;
+    @include centerColumn();
+
+    .aboutPage {
+      @include centerColumn();
+      width: 100%;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      max-width: 600px;
+      gap: 20px;
+      text-align: center;
+
+      .flavorText {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+      }
+
+      .habitat::before {
+        content: "Habitat: ";
+        font-weight: 500;
+        padding-right: 0.25rem;
+      }
+
+      .habitat {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 30px;
+        text-transform: capitalize;
+      }
+
+      .weightHeightContainer {
+        width: 100%;
+        max-width: 300px;
+        @include centerRow();
+        justify-content: space-around;
+
+        .value {
+          font-weight: 700;
+          font-size: 26px;
+        }
+
+        svg {
+          width: 30px;
+          height: auto;
+          color: #454344 !important;
+        }
+
+        ::after,
+        ::before {
+          font-size: 14px;
+          font-weight: 500;
+          color: #454344 !important;
+          padding-left: 0.25rem;
+        }
+
+        .heightIcon,
+        .weightIcon {
+          @include centerRow();
+        }
+        .heightIcon::after {
+          content: "height";
+        }
+        .weightIcon::after {
+          content: "weight";
+        }
+      }
+    }
+
+    .abilityPage {
+      @include centerColumn();
+      align-items: flex-start;
+      width: 100%;
+      max-width: 600px;
+      padding-bottom: 30px;
+      gap: 0;
+      text-align: left;
+
+      .abilityContainer {
+        position: relative;
+        padding-left: 1rem;
+        margin: 0;
+        gap: 0;
+
+        .fancyName {
+          background-color: currentColor;
+          width: fit-content;
+          padding: 5px 30px 5px 20px;
+          border-radius: 30px 30px 30px 0;
+          outline: 3px solid white;
+          transform: translate(0, 50%);
+        }
+
+        .flavorText {
+          padding: 30px 30px 10px 30px;
+          background-color: currentColor;
+          min-width: 80%;
+          width: fit-content;
+          border-radius: 0 20px 0 20px;
+          border: 1px solid white;
+        }
+
+        .effectText {
+          @include centerRow();
+          align-items: flex-start;
+          padding: 5px 10px 0 4px;
+          gap: 5px;
+          height: fit-content;
+
+          h6 {
+            font-weight: 300;
+            font-size: 14px;
+          }
+
+          svg {
+            min-width: 15px;
+            height: auto;
+          }
+
+          .textContainer {
+            display: inline-block;
+
+            button {
+              padding-left: 10px;
+              font-weight: 300;
+              font-size: 14px;
+              background-color: transparent;
+              border: none;
+              font-style: italic;
+              color: blue;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    .statsPage {
+      @include centerColumn();
+      width: 100%;
+      padding: 30px 20px 30px 5px;
+      max-width: 500px;
+      gap: 10px;
+      text-align: center;
+
+      .barContainer {
+        @include centerRow();
+        gap: 10px;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: space-around;
+        width: 100%;
+
+        .label {
+          font-weight: 700;
+          @include centerRow();
+          align-content: flex-end;
+          justify-content: flex-end;
+          align-items: center;
+          font-size: 20px;
+          text-align: right;
+          min-width: 100px;
+          text-transform: uppercase;
+        }
+        .label::after {
+          content: attr(content);
+          font-weight: 400;
+          text-align: center;
+          font-size: 16px;
+          padding-left: 5px;
+          min-width: 36px;
+        }
+
+        .bar {
+          @include centerRow();
+          justify-content: flex-start;
+          height: 20px;
+          position: relative;
+          width: 100%;
+
+          .coloredBar {
+            // background-color: aqua;
+            height: inherit;
+            width: 100%;
+            transition: 0.5s;
+            border-radius: 20px;
+            animation: fillBar 1500ms ease-out;
+
+            @keyframes fillBar {
+              0% {
+                width: 0%;
+              }
+              100% {
+                width: 100%;
+              }
+            }
+          }
+
+          .backgroundBar {
+            background-color: #b4b4b4;
+            height: inherit;
+            border-radius: 20px;
+            left: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pokemonPageContainer::after {
+  content: " ";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 330px;
+  width: 100vw;
+  background-color: currentColor;
+  clip-path: ellipse(140% 100% at 50% 0%);
+}
